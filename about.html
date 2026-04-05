@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACID RESISTANCE | About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: block; min-height: auto;">
+
+    <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="music.html" class="nav-btn">Music</a>
+        <a href="artists.html" class="nav-btn">Artists</a>
+        <a href="about.html" class="nav-btn active" style="background-color: var(--acid-cyan); color: #000; border-color: #fff;">About Us</a>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">THE LABEL</h1>
+        <p style="color: #888; font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 5px;">Our history and contact information</p>
+    </header>
+
+    <main class="about-container">
+        <div class="about-grid">
+            
+            <section class="manifesto-box">
+                <h2 class="manifesto-title">17 Years of Resistance</h2>
+                <div class="manifesto-text">
+                    <p>Founded more than seventeen years ago, <span class="highlight-text">ACID RESISTANCE</span> was born in Colombia with a clear mission: to promote and encourage the pure, uncompromising spirit of Acid Techno.</p>
+                    
+                    <p>From underground parties in Bogotá to international showcases, the collective has held events around the world, leaving its mark in cities like La Plata, Buenos Aires, Curitiba, Sao Paulo, Vienna, Valencia, Berlin, and beyond. We have worked alongside the most legendary DJs and crews of the global scene, sharing the true warehouse energy with the world.</p>
+
+                    <p>Now established in Barcelona for more than 4 years, Acid Resistance has gathered a new wave of local and international talent. Under the concept of the <span class="highlight-text">"Barcelombia Army On Acid"</span>, we are retaking the scene to bring back the golden era of what used to be known as Barcelona Acid City.</p>
+                    
+                    <p>This is not just a label; it's a movement. <span class="highlight-text">Pure Acid. No compromises.</span></p>
+                </div>
+            </section>
+
+            <section class="contact-box">
+                <h2 class="contact-title">Bookings & Contact</h2>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:DJZYCO@HOTMAIL.COM">DJZYCO@HOTMAIL.COM</a> </div>
+                    
+                    <div class="contact-item">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <a href="https://wa.me/34680165854" target="_blank">+34 680 165 854</a> </div>
+                    
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Barcelona, Spain</span> </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <audio id="bg-music" loop>
+        <source src="audio/pista1.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" class="floating-music-btn">
+        <i class="fa-solid fa-play"></i>
+    </button>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const btn = document.getElementById('music-toggle');
+        const icon = btn.querySelector('i');
+
+        music.volume = 0.5; 
+
+        btn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play().then(() => {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    btn.classList.add('playing'); 
+                }).catch((error) => {
+                    console.error("Detalle del error:", error);
+                });
+            } else {
+                music.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+                btn.classList.remove('playing'); 
+            }
+        });
+    </script>
+
+</body>
+</html>

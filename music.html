@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACID RESISTANCE | Music</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: block; min-height: auto;">
+
+    <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="music.html" class="nav-btn active" style="background-color: var(--acid-pink); color: #000; border-color: #fff;">Music</a>
+        <a href="artists.html" class="nav-btn">Artists</a>
+        <a href="about.html" class="nav-btn">About Us</a>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">LISTEN</h1>
+        <p style="color: #888; font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 5px;">Our full catalog available online</p>
+    </header>
+
+    <main class="platform-container">
+        
+        <a href="https://flatliferecords.bandcamp.com/music" target="_blank" class="platform-btn bc-btn">
+            <i class="fa-brands fa-bandcamp platform-icon"></i>
+            <div class="platform-info">
+                <h2>Bandcamp</h2>
+                <p>Digital & Physical Releases</p>
+            </div>
+        </a>
+
+        <a href="https://soundcloud.com/acidresistancerecords" target="_blank" class="platform-btn sc-btn">
+            <i class="fa-brands fa-soundcloud platform-icon"></i>
+            <div class="platform-info">
+                <h2>SoundCloud</h2>
+                <p>Sets & Exclusive Previews</p>
+            </div>
+        </a>
+
+        <a href="https://www.discogs.com/label/594256-Acid-Resistance-Records" target="_blank" class="platform-btn dg-btn">
+            <i class="fa-solid fa-compact-disc platform-icon"></i>
+            <div class="platform-info">
+                <h2>Discogs</h2>
+                <p>Complete Vinyl History</p>
+            </div>
+        </a>
+
+    </main>
+
+    <audio id="bg-music" loop>
+        <source src="audio/pista1.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" class="floating-music-btn">
+        <i class="fa-solid fa-play"></i>
+    </button>
+
+<script>
+        const music = document.getElementById('bg-music');
+        const btn = document.getElementById('music-toggle');
+        const icon = btn.querySelector('i');
+
+        // Ajustamos el volumen un poco para que no asuste al usuario al entrar
+        music.volume = 0.5; 
+
+        btn.addEventListener('click', () => {
+            if (music.paused) {
+                // Intentamos reproducir la música
+                music.play().then(() => {
+                    // Si funciona, cambiamos el ícono a pausa y encendemos el neón
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    btn.classList.add('playing');
+                }).catch((error) => {
+                    // SI FALLA, TE AVISARÁ CON ESTE MENSAJE:
+                    alert("❌ Error: No se encontró la canción. Verifica que tu archivo se llame exactamente 'pista1.mp3' y esté dentro de la carpeta 'audio'.");
+                    console.error("Detalle del error:", error);
+                });
+            } else {
+                music.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+                btn.classList.remove('playing');
+            }
+        });
+    </script>
+
+</body>
+</html>

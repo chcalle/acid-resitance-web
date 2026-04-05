@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACID RESISTANCE | Artists</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: block; min-height: auto;">
+
+    <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Home</a>
+        <a href="music.html" class="nav-btn">Music</a>
+        <a href="artists.html" class="nav-btn active" style="background-color: var(--acid-yellow); color: #000; border-color: #fff;">Artists</a>
+        <a href="about.html" class="nav-btn">About Us</a>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">ROSTER</h1>
+        <p style="color: #888; font-family: 'Nunito', sans-serif; font-weight: 700; margin-top: 5px;">The minds behind the resistance</p>
+    </header>
+
+    <main class="roster-container">
+        
+        <article class="artist-card">
+            <div class="artist-img-wrapper">
+                <img src="img/zyco.jpg" alt="DJ Zyco" class="artist-img">
+            </div>
+            <div class="artist-header">
+                <h2 class="artist-name">DJ ZYCO</h2>
+                <p class="artist-tagline">The Acid Commander  /// BCN</p>
+            </div>
+            <div class="artist-bio">
+                <p>Having spent many years in the Punk Underground scene, he began his career as a DJ in 1995. He eventually found his home in Techno, choosing his music based on forceful sounds, later realising that he had entered the world of Acid Techno.</p>
+                <p>A spirit that he has been responsible for promoting through the foundation of the label ACID RESISTANCE.</p>
+            </div>
+            <div class="artist-links">
+                <a href="#" target="_blank" class="artist-social-btn" title="SoundCloud"><i class="fa-brands fa-soundcloud"></i></a>
+                <a href="#" target="_blank" class="artist-social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </article>
+
+        <article class="artist-card">
+            <div class="artist-img-wrapper">
+                <img src="img/alquimista.jpg" alt="Alquimista" class="artist-img">
+            </div>
+            <div class="artist-header">
+                <h2 class="artist-name">ALQUIMISTA</h2>
+                <p class="artist-tagline">SACRED CODES /// BEL</p>
+            </div>
+            <div class="artist-bio">
+                <p>Known for delivering relentless warehouse energy, Alquimista blends distorted 303 basslines with heavy, driving percussion. Emerging from the underground rave scene in the early 2010s, they have quickly become a staple of the international circuit.</p>
+            </div>
+            <div class="artist-links">
+                <a href="#" target="_blank" class="artist-social-btn" title="SoundCloud"><i class="fa-brands fa-soundcloud"></i></a>
+                <a href="#" target="_blank" class="artist-social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </article>
+
+        <article class="artist-card">
+            <div class="artist-img-wrapper">
+                <img src="img/artista2.jpg" alt="Artista 2" class="artist-img">
+            </div>
+            <div class="artist-header">
+                <h2 class="artist-name">ARTISTA 2</h2>
+                <p class="artist-tagline">Industrial Assault /// UK</p>
+            </div>
+            <div class="artist-bio">
+                <p>Synonymous with the squelching sounds of the Roland TB-303. A purist at heart, their live performances rely entirely on analog gear, bringing a unique, improvisational chaos to the dancefloor that cannot be replicated digitally.</p>
+            </div>
+            <div class="artist-links">
+                <a href="#" target="_blank" class="artist-social-btn" title="SoundCloud"><i class="fa-brands fa-soundcloud"></i></a>
+                <a href="#" target="_blank" class="artist-social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </article>
+
+    </main>
+
+    <audio id="bg-music" loop>
+        <source src="audio/pista1.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" class="floating-music-btn">
+        <i class="fa-solid fa-play"></i>
+    </button>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const btn = document.getElementById('music-toggle');
+        const icon = btn.querySelector('i');
+
+        music.volume = 0.5; 
+
+        btn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play().then(() => {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    btn.classList.add('playing'); 
+                }).catch((error) => {
+                    alert("❌ Error: No se encontró la canción. Verifica que tu archivo se llame 'pista1.mp3' y esté en la carpeta 'audio'.");
+                    console.error("Detalle del error:", error);
+                });
+            } else {
+                music.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+                btn.classList.remove('playing'); 
+            }
+        });
+    </script>
+
+</body>
+</html>

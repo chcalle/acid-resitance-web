@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACID RESISTANCE | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="landing-wrapper">
+        
+        <img src="img/logo.png" alt="Acid Resistance Records" class="main-logo">
+
+        <nav class="main-nav">
+            <a href="music.html" class="nav-btn">Music</a>
+            <a href="artists.html" class="nav-btn">Artists</a>
+            <a href="about.html" class="nav-btn">About Us</a>
+        </nav>
+
+        <p class="landing-sub">COLOMBIA /// BARCELONA</p>
+
+    </main>
+
+    <audio id="bg-music" loop>
+        <source src="audio/pista1.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-toggle" class="floating-music-btn">
+        <i class="fa-solid fa-play"></i>
+    </button>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const btn = document.getElementById('music-toggle');
+        const icon = btn.querySelector('i');
+
+        music.volume = 0.5; 
+
+        btn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play().then(() => {
+                    icon.classList.remove('fa-play');
+                    icon.classList.add('fa-pause');
+                    btn.classList.add('playing'); 
+                }).catch((error) => {
+                    console.error("Detalle del error:", error);
+                });
+            } else {
+                music.pause();
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-play');
+                btn.classList.remove('playing'); 
+            }
+        });
+    </script>
+
+</body>
+</html>
